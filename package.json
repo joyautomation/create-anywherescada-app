@@ -4,7 +4,7 @@
   "description": "Create a SvelteKit app connected to AnywhereScada",
   "type": "module",
   "bin": {
-    "create-anywherescada-app": "./dist/index.js"
+    "create-anywherescada-app": "dist/index.js"
   },
   "files": [
     "dist",
