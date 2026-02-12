@@ -15,6 +15,9 @@ export const GET: RequestHandler = () => {
 		start(controller) {
 			const encoder = new TextEncoder();
 
+			// Send initial event so EventSource fires onopen
+			controller.enqueue(encoder.encode('event: connected\ndata: true\n\n'));
+
 			const client = createClient({
 				url: `wss://api.anywherescada.com/graphql?token=${ANYWHERESCADA_API_KEY}`,
 				webSocketImpl: WebSocket
@@ -26,11 +29,14 @@ export const GET: RequestHandler = () => {
 					next: (result) => {
 						if (result.data?.metricUpdate) {
 							const data = `event: metricUpdate\ndata: ${JSON.stringify(result.data.metricUpdate)}\n\n`;
-							controller.enqueue(encoder.encode(data));
+							try {
+								controller.enqueue(encoder.encode(data));
+							} catch {
+								// Stream already closed
+							}
 						}
 					},
-					error: (err) => {
-						console.error('Subscription error:', err);
+					error: () => {
 						try {
 							controller.close();
 						} catch {

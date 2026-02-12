@@ -61,9 +61,9 @@
 
 		const eventSource = new EventSource('/api/subscribe');
 
-		eventSource.onopen = () => {
+		eventSource.addEventListener('connected', () => {
 			connected = true;
-		};
+		});
 
 		eventSource.addEventListener('metricUpdate', (event) => {
 			const updates: MetricUpdate[] = JSON.parse(event.data);

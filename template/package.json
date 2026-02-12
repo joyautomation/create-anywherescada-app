@@ -22,6 +22,7 @@
   "dependencies": {
     "@fontsource/space-grotesk": "^5.2.8",
     "@joyautomation/salt": "^0.0.21",
+    "graphql": "^16.9.0",
     "graphql-ws": "^6.0.0",
     "sass": "^1.89.0",
     "ws": "^8.19.0"
