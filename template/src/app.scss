@@ -1,0 +1,27 @@
+@use '@fontsource/space-grotesk';
+
+:root {
+	font-family: 'Space Grotesk', sans-serif;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 6);
+	background: var(--theme-neutral-100);
+	border-bottom: 1px solid var(--theme-neutral-300);
+
+	h1 {
+		font-size: var(--text-xl);
+		font-weight: 700;
+		color: var(--theme-text);
+		margin: 0;
+	}
+}
+
+main {
+	padding: calc(var(--spacing-unit) * 6);
+	max-width: 1400px;
+	margin: 0 auto;
+}

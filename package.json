@@ -1,0 +1,34 @@
+{
+  "name": "create-anywherescada-app",
+  "version": "0.0.1",
+  "description": "Create a SvelteKit app connected to AnywhereScada",
+  "type": "module",
+  "bin": {
+    "create-anywherescada-app": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "template"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "svelte",
+    "sveltekit",
+    "scada",
+    "anywherescada",
+    "iot",
+    "sparkplug"
+  ],
+  "author": "Joy Automation",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.8.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
