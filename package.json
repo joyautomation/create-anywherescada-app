@@ -22,6 +22,10 @@
     "iot",
     "sparkplug"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joyautomation/create-anywherescada-app"
+  },
   "author": "Joy Automation",
   "license": "MIT",
   "devDependencies": {
