@@ -5,6 +5,10 @@ on:
     tags:
       - "v*"
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -18,5 +22,4 @@ jobs:
 
       - run: npm ci
       - run: npm run build
-
       - run: npm publish --access public
