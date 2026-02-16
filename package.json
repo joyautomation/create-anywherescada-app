@@ -1,6 +1,6 @@
 {
   "name": "create-anywherescada-app",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Create a SvelteKit app connected to AnywhereScada",
   "type": "module",
   "bin": {

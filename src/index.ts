@@ -75,7 +75,7 @@ async function main() {
 
   // Initialize git
   try {
-    execSync("git init", { cwd: targetDir, stdio: "ignore" });
+    execSync("git init -b main", { cwd: targetDir, stdio: "ignore" });
     execSync("git add -A", { cwd: targetDir, stdio: "ignore" });
     execSync('git commit -m "Initial commit from create-anywherescada-app"', {
       cwd: targetDir,
