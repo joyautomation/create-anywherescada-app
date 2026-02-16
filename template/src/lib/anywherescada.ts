@@ -43,6 +43,20 @@ export const QUERIES = {
 				}
 			}
 		}
+	`,
+	history: `
+		query GetHistory($start: Date!, $end: Date!, $metrics: [MetricHistoryEntry!]!, $interval: String, $samples: Int, $raw: Boolean) {
+			history(start: $start, end: $end, metrics: $metrics, interval: $interval, samples: $samples, raw: $raw) {
+				groupId
+				nodeId
+				deviceId
+				metricId
+				history {
+					value
+					timestamp
+				}
+			}
+		}
 	`
 };
 

@@ -1,2 +1,8 @@
 node_modules/
 dist/
+pnpm-lock.yaml
+template/.env
+template/.svelte-kit/
+template/pnpm-lock.yaml
+template/pnpm-workspace.yaml
+template/node_modules/

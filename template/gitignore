@@ -2,3 +2,5 @@ node_modules/
 .svelte-kit/
 build/
 .env
+pnpm-lock.yaml
+pnpm-workspace.yaml

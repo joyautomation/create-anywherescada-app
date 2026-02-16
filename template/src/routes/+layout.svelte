@@ -1,14 +1,19 @@
 <script lang="ts">
 	import '@joyautomation/salt/styles.scss';
 	import '../app.scss';
-	import { Toast, ThemeButton } from '@joyautomation/salt';
+	import { Toast, ThemeSwitch, themeState, type Theme } from '@joyautomation/salt';
+	import { onMount } from 'svelte';
 
 	const { data, children } = $props();
+
+	onMount(() => {
+		themeState.initialize(data.theme as Theme | null);
+	});
 </script>
 
 <header>
 	<h1>My SCADA App</h1>
-	<ThemeButton theme={data.theme} />
+	<ThemeSwitch />
 </header>
 
 <main>

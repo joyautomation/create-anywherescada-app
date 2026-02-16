@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { ChevronDown, ChevronRight } from '@joyautomation/salt/icons';
 	import type { SparkplugGroup, MetricUpdate } from '$lib/types';
+	import type { MetricInfo } from '$lib/components/charts/types';
+	import TrendChart from '$lib/components/charts/TrendChart.svelte';
 
 	const { data } = $props();
 
@@ -13,6 +15,31 @@
 	let expandedGroups = $state<Set<string>>(new Set());
 	let expandedNodes = $state<Set<string>>(new Set());
 	let expandedDevices = $state<Set<string>>(new Set());
+
+	let availableMetrics = $derived<MetricInfo[]>(
+		groups.flatMap((group) =>
+			group.nodes.flatMap((node) => [
+				...node.metrics.map((m) => ({
+					groupId: group.id,
+					nodeId: node.id,
+					deviceId: '',
+					metricId: m.id,
+					name: m.name,
+					type: m.type
+				})),
+				...node.devices.flatMap((device) =>
+					device.metrics.map((m) => ({
+						groupId: group.id,
+						nodeId: node.id,
+						deviceId: device.id,
+						metricId: m.id,
+						name: m.name,
+						type: m.type
+					}))
+				)
+			])
+		)
+	);
 
 	function toggleSet(set: Set<string>, key: string): Set<string> {
 		const next = new Set(set);
@@ -179,6 +206,10 @@
 			{/if}
 		</div>
 	{/each}
+
+	{#if availableMetrics.length > 0}
+		<TrendChart {availableMetrics} />
+	{/if}
 </div>
 
 <style lang="scss">

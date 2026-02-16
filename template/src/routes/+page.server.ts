@@ -1,10 +1,7 @@
 import type { PageServerLoad } from './$types';
 import { ANYWHERESCADA_API_KEY } from '$env/static/private';
 import { query, QUERIES } from '$lib/anywherescada';
-import { actions as saltActions } from '@joyautomation/salt';
 import type { SparkplugGroup } from '$lib/types';
-
-const { setTheme } = saltActions;
 
 export const load: PageServerLoad = async () => {
 	if (!ANYWHERESCADA_API_KEY) {
@@ -17,8 +14,4 @@ export const load: PageServerLoad = async () => {
 	} catch (err) {
 		return { groups: [], error: err instanceof Error ? err.message : 'Failed to fetch data' };
 	}
-};
-
-export const actions = {
-	setTheme
 };
